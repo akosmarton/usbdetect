@@ -1,4 +1,4 @@
-package hid
+package usbinfo
 
 import (
 	"bytes"
@@ -76,7 +76,6 @@ func (hid *usbDevice) claim() error {
 	} else {
 		return nil
 	}
-	return nil
 }
 
 func (hid *usbDevice) release() error {
@@ -239,18 +238,16 @@ func walker(path string, cb func(Device)) error {
 						if err := cast(body, i); err != nil {
 							return err
 						}
-						if i.InterfaceClass == UsbHidClass {
-							device = &usbDevice{
-								info: Info{
-									Vendor:    devDesc.Vendor,
-									Product:   devDesc.Product,
-									Revision:  devDesc.Revision,
-									SubClass:  i.InterfaceSubClass,
-									Protocol:  i.InterfaceProtocol,
-									Interface: i.Number,
-								},
-								path: path,
-							}
+						device = &usbDevice{
+							info: Info{
+								Vendor:    devDesc.Vendor,
+								Product:   devDesc.Product,
+								Revision:  devDesc.Revision,
+								SubClass:  i.InterfaceSubClass,
+								Protocol:  i.InterfaceProtocol,
+								Interface: i.Number,
+							},
+							path: path,
 						}
 					case UsbDescTypeEndpoint:
 						if device != nil {

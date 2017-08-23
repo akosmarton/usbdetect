@@ -1,6 +1,6 @@
 // +build amd64
 
-package hid
+package usbinfo
 
 import (
 	"unsafe"

@@ -1,4 +1,4 @@
-package hid
+package usbinfo
 
 const UsbHidClass = 3
 
