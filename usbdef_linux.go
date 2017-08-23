@@ -19,17 +19,6 @@ type deviceDesc struct {
 	NumConfigurations uint8
 }
 
-type configDesc struct {
-	Length             uint8
-	DescriptorType     uint8
-	TotalLength        uint16
-	NumInterfaces      uint8
-	ConfigurationValue uint8
-	Configuration      uint8
-	Attributes         uint8
-	MaxPower           uint8
-}
-
 type interfaceDesc struct {
 	Length            uint8
 	DescriptorType    uint8
@@ -50,18 +39,6 @@ type endpointDesc struct {
 	MaxPacketSize  uint16
 	Interval       uint8
 }
-
-type hidReportDesc struct {
-	Length         uint8
-	DescriptorType uint8
-}
-
-const (
-	USBDEVFS_CONNECT    = 0x5517
-	USBDEVFS_DISCONNECT = 0x5516
-	USBDEVFS_CLAIM      = 0x8004550f
-	USBDEVFS_RELEASE    = 0x80045510
-)
 
 const DevBusUsb = "/dev/bus/usb"
 
